@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Statistika</title>
+</head>
+<body>
+    <h1>Pozdravljen!</h1>
+    <div>
+        Nahajaš se na spletni strani, kjer se spremlja statistika igralcev ekipe Bazen Bar & BBQ.
+    </div>
+    <div>
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.opponent.label }}
+                {{ form.opponent(size=32) }}
+            </div>
+            <div>
+                {{ form.date.label }}
+                {{ form.date }}
+            </div>
+            {{ form.submit() }}
+        </form>
+    </div>
+</body>
+</html>
