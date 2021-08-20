@@ -20,12 +20,14 @@ class Players(db.Model):
     blocks = db.Column(db.Integer, index=True)
     steals = db.Column(db.Integer, index=True)
     id_positon = db.Column(db.Integer, db.ForeignKey('positions.position_id'), nullable=False)
+    id_opponent = db.Column(db.Integer, db.ForeignKey('opponents.opponent_id'))
 
     def __repr__(self):
-        '''return '<Player {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}>'\
+        return '<{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}>'\
             .format(self.player_id, self.full_name, self.pa_1, self.pm_1, self.pa_2, self.pm_2, self.pa_3, self.pm_3,
-                    self.fouls_o, self.fouls_d, self.rebounds_o, self.rebounds_d, self.assists, self.turnovers, self)
-'''
+                    self.fouls_o, self.fouls_d, self.rebounds_o, self.rebounds_d, self.assists, self.turnovers,
+                    self.blocks, self.steals)
+
     def __init__(self):
         print("bottom text")
 
@@ -46,15 +48,16 @@ class Positions(db.Model):
 class Opponents(db.Model):
     opponent_id = db.Column(db.INTEGER, primary_key=True, autoincrement=True, nullable=False)
     team_name = db.Column(db.String(50), index=True)
-    points = db.Column(db.String(50), index=True)
+    points = db.Column(db.Integer, index=True)
     score = db.Column(db.Boolean, index=True)
     result = db.Column(db.Boolean, index=True)
     date = db.Column(db.Date, index=True, nullable=False)
     id_opponent = db.relationship('Players', backref='opponent', lazy=True)
 
     def __repr__(self):
-        return '<{}: {} - {}>'.format(self.id_kategorije, self.naziv, self.vrednost)
+        return '<{}: {} - {}>'.format(self.opponent_id, self.team_name, self.date)
 
     def __init__(self, team_name, date):
-        team_name = team_name
-        date = date
+        self.team_name = team_name
+        self.date = date
+        self.points = 0
