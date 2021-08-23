@@ -1,0 +1,73 @@
+{% extends "playerList.html" %}
+
+{% block content %}
+    <h2 id="bbq" style="text-align: center;">Bazen Bar & BBQ</h2>
+        <div id="rezultat1" style="text-align: center;">47</div>
+
+        <div style="text-align: center;">VS</div>
+
+        <h2 id="nasportnik" style="text-align: right;">Nasprotnik</h2>
+        <div id="result2" style="text-align: right;">{{ current_opponent.points }}</div>
+
+        <button id="1pm" type="button" points="{{ current_opponent.points }}">1PM</button>
+        <button id="2pm" type="button" points="{{ current_opponent.points }}">2PM</button>
+        <button id="3pm" type="button" points="{{ current_opponent.points }}">3PM</button>
+    <!--<div id="1pm"style="text-align: right;">1PM</div>
+    <div id="2pm"style="text-align: right;">2PM</div>
+    <div id="3pm"style="text-align: right;">3PM</div>-->
+
+
+        <button type="button">Končaj tekmo</button>
+        <button type="button">Potrdi</button>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#1pm').on('click', function () {
+                const points = $(this).attr('points');
+
+                const req = $.ajax({
+                    url: '/add_points',
+                    type: 'POST',
+                    data: {points: points, increment: 1}
+                });
+
+                req.done(function (data) {
+                    $('#result2').text(data.points);
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('#2pm').on('click', function () {
+                const points = $(this).attr('points');
+
+                const req = $.ajax({
+                    url: '/add_points',
+                    type: 'POST',
+                    data: {points: points, increment: 2}
+                });
+
+                req.done(function (data) {
+                    $('#result2').text(data.points);
+                });
+            });
+        });
+
+        $(document).ready(function () {
+            $('#3pm').on('click', function () {
+                const points = $(this).attr('points');
+
+                const req = $.ajax({
+                    url: '/add_points',
+                    type: 'POST',
+                    data: {points: points, increment: 3}
+                });
+
+                req.done(function (data) {
+                    $('#result2').text(data.points);
+                });
+            });
+        });
+    </script>
+{% endblock %}

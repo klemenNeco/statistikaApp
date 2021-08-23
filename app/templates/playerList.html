@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ current_opponent.team_name }}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <h1>Izberi igralca</h1>
+    <aside>
+        {% for player in players %}
+            <a href="statistika.html" class="player">
+                <div class="player">
+                    <div>{{ player.player_id }}</div>
+                    <div>{{ player.full_name }}</div>
+                    <div>Center</div>
+                </div>
+            </a>
+        {% endfor  %}
+    </aside>
+    {% block content %}{% endblock %}
+
+
+
+</body>
+</html>
