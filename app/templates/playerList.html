@@ -23,7 +23,7 @@
                 <h1>Izberi igralca</h1>
                 <div class="side-players">
                     {% for player in players %}
-                        <a href="statistika.html" class="player">
+                        <a href="{{ url_for('player_stat', id=player.player_id) }}" class="player">
                             <table>
                                 <tr>
                                     <td rowspan="2" class="player-id">
