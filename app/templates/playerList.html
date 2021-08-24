@@ -4,20 +4,38 @@
     <meta charset="UTF-8">
     <title>{{ current_opponent.team_name }}</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+    
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/playerList.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap" rel="stylesheet"> 
+
 </head>
 <body>
     <h1>Izberi igralca</h1>
-    <aside>
+    <div class="side-players">
         {% for player in players %}
             <a href="statistika.html" class="player">
-                <div class="player">
-                    <div>{{ player.player_id }}</div>
-                    <div>{{ player.full_name }}</div>
-                    <div>Center</div>
-                </div>
+                <table>
+                    <tr>
+                        <td rowspan="2" class="player-id">
+                            <div>{{ player.player_id }}</div>
+                        </td>
+                        <td>
+                            <div class="player-name">{{ player.full_name }}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="player-pos">Center</div>
+                        </td>
+                    </tr>
+                </table>
             </a>
         {% endfor  %}
-    </aside>
+    </div>
     {% block content %}{% endblock %}
 
 

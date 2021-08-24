@@ -1,0 +1,67 @@
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6em;
+}
+
+body {
+    background-color: white;
+    padding: 30px;
+}
+
+.side-players {
+    height: 100%;
+    width: 20%;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: lightgrey;
+}
+
+table {
+    margin: 10px 0;
+    padding: 7px 0;
+    width: 100%;
+    border: none;
+}
+
+table:hover {
+    background-color: lightgrey;
+    border-radius: 7px;
+}
+
+.player-id {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: black;
+    font-size: 1.3em;
+    width: 40px;
+    text-align: center;
+}
+
+.player-name {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.player-pos {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: lighter;
+    color: black;
+}
+
+@media screen and (max-width: 1200px) {
+    .side-players {
+        width: 40%;
+    }    
+}
+
+@media screen and (max-width: 600px) {
+    .side-players {
+        width: 50%;
+    }    
+}

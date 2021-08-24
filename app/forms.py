@@ -5,7 +5,7 @@ from datetime import datetime
 
 
 class OpponentForm(FlaskForm):
-    opponent = StringField('Vpiši ime nasprotnika', validators=[DataRequired()])
-    date = DateField('Izberi datum tekme', format='%d-%m-%Y', default=datetime.now())
-    submit = SubmitField('NADALJUJ')
+    opponent = StringField('', validators=[DataRequired()], id="opponent_input")
+    date = DateField('', format='%d-%m-%Y', default=datetime.now(), id="date_input")
+    submit = SubmitField('NADALJUJ', id="continue_button")
 

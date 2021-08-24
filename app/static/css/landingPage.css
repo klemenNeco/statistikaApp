@@ -1,0 +1,66 @@
+body {
+    background-color: #F4A41E;
+    padding: 30px;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6em;
+    margin-bottom: 0;
+}
+
+div {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.champ-logo {
+    margin-bottom: 10px;
+}
+
+.people {
+    position: absolute;
+    bottom: 50px;
+    right: 10%;
+    width: 50%;
+    z-index: 1;
+}
+
+.desc {
+    width: 35%;
+    font-size: 1.1em;
+    line-height: 1.5em;
+}
+
+.bottom-form {
+    z-index: 2;
+    position: absolute;
+    bottom: 50px;
+}
+
+#opponent_input, #date_input {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.1em;
+    width: 250px;
+    border-radius: 7px;
+    padding: 10px;
+    border: 0;
+    margin: 10px 0;
+}
+
+#continue_button {
+    border: 0;
+    color: #F4A41E;
+    background-color: black;
+    font-size: 1.1em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 7px;
+}
+
+@media screen and (max-width: 800px) {
+    .people {
+        bottom: 40%;
+    }    
+ }
