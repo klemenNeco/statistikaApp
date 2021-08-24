@@ -5,6 +5,9 @@
     <title>{{ current_opponent.team_name }}</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
     
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
     <link rel="stylesheet" href="/static/css/base.css">
     <link rel="stylesheet" href="/static/css/playerList.css">
 
@@ -14,31 +17,40 @@
 
 </head>
 <body>
-    <h1>Izberi igralca</h1>
-    <div class="side-players">
-        {% for player in players %}
-            <a href="statistika.html" class="player">
-                <table>
-                    <tr>
-                        <td rowspan="2" class="player-id">
-                            <div>{{ player.player_id }}</div>
-                        </td>
-                        <td>
-                            <div class="player-name">{{ player.full_name }}</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="player-pos">Center</div>
-                        </td>
-                    </tr>
-                </table>
-            </a>
-        {% endfor  %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Izberi igralca</h1>
+                <div class="side-players">
+                    {% for player in players %}
+                        <a href="statistika.html" class="player">
+                            <table>
+                                <tr>
+                                    <td rowspan="2" class="player-id">
+                                        <div>{{ player.player_id }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="player-name">{{ player.full_name }}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="player-pos">Center</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    {% endfor  %}
+                </div>
+            </div>
+            <div class="col">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
     </div>
-    {% block content %}{% endblock %}
 
 
-
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 </html>
