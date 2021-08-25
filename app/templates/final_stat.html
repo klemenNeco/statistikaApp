@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ current_opponent.team_name }}</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/playerList.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Izberi igralca</h1>
+                <div class="side-players">
+                    {% for player in players %}
+                        <a href="{{ url_for('final_stat', id=player.player_id) }}" class="player" id="{{ player.player_id }}">
+                            <table>
+                                <tr>
+                                    <td rowspan="2" class="player-id">
+                                        <div>{{ player.jersey_no }}</div>
+                                    </td>
+                                    <td>
+                                        <div class="player-name">{{ player.full_name }}</div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="player-pos">Center</div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </a>
+                    {% endfor  %}
+                </div>
+            </div>
+            <div class="col">
+                <h2>Statistika igralca {{ selected_player.full_name }}</h2>
+                <table>
+                    <thead>Meti iz igre</thead>
+                    <tr>
+                        <td>Število poizkusov</td>
+                        <td>Število zadetih metov</td>
+                        <td>Odstotek zadetih metov</td>
+                    </tr>
+                    <tr>
+                        <td id="fga">{{ fga }}</td>
+                        <td id="fgm">{{ fgm }}</td>
+                        <td id="percentage_fg">{{ percentage_fg }}</td>
+                    </tr>
+                </table>
+                <table>
+                    <thead>Meti za 2 točki</thead>
+                    <tr>
+                        <td>Število poizkusov</td>
+                        <td>Število zadetih metov</td>
+                        <td>Odstotek zadetih metov</td>
+                    </tr>
+                    <tr>
+                        <td id="pa2">{{ selected_player.pa_2 }}</td>
+                        <td id="pm2">{{ selected_player.pm_2 }}</td>
+                        <td id="percentage2">{{ percentage2 }}</td>
+                    </tr>
+                </table>
+                <table>
+                    <thead>Meti za 3 točke</thead>
+                    <tr>
+                        <td>Število poizkusov</td>
+                        <td>Število zadetih metov</td>
+                        <td>Odstotek zadetih metov</td>
+                    </tr>
+                    <tr>
+                        <td id="pa3">{{ selected_player.pa_3 }}</td>
+                        <td id="pm3">{{ selected_player.pm_3 }}</td>
+                        <td id="percentage3">{{ percentage3 }}</td>
+                    </tr>
+                </table>
+                <table>
+                    <thead>Prosti meti</thead>
+                    <tr>
+                        <td>Število poizkusov</td>
+                        <td>Število zadetih metov</td>
+                        <td>Odstotek zadetih metov</td>
+                    </tr>
+                    <tr>
+                        <td id="pa1">{{ selected_player.pa_1 }}</td>
+                        <td id="pm1">{{ selected_player.pm_1 }}</td>
+                        <td id="percentage1">{{ percentage1 }}</td>
+                    </tr>
+                </table>
+                <table>
+                    <thead>Ostala statistika</thead>
+                    <tr>
+                        <td>Asistence</td>
+                        <td>Bloki</td>
+                        <td>Izgubljene žoge</td>
+                        <td>Ukradene žoge</td>
+                        <td>Osebne napake v napadu</td>
+                    </tr>
+                    <tr>
+                        <td id="ast">{{ selected_player.assists }}</td>
+                        <td id="blk">{{ selected_player.blocks }}</td>
+                        <td id="to">{{ selected_player.turnovers }}</td>
+                        <td id="stl">{{ selected_player.steals }}</td>
+                        <td id="opf">{{ selected_player.fouls_o }}</td>
+                    </tr>
+                    <tr>
+                        <td>Osebne napake v obrambi</td>
+                        <td>Skoki v napadu</td>
+                        <td>Skoki v obrambi</td>
+                    </tr>
+                    <tr>
+                        <td id="dpf">{{ selected_player.fouls_d }}</td>
+                        <td id="oreb">{{ selected_player.rebounds_o }}</td>
+                        <td id="dreb">{{ selected_player.rebounds_d }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        /*$(document).ready(function () {
+            $('.player').on('click', function () {
+                const p_id = $(this).attr('id');
+
+                const req = $.ajax({
+                    url: '/player_stat_final',
+                    type: 'POST',
+                    data: {player_id: p_id, fga: 0, fgm: 0, percentage_fg: 0, pa2: 0, pm2: 0,
+                            percentage2: 0}
+                });
+
+                req.done(function (data) {
+                    console.log(data.pm2);
+                    $('.stat').text(0);
+                   $('#fga').text(data.fga);
+                   $('#fgm').text(data.fgm);
+                   $('#percentage_fg').text(data.percentage_fg);
+                   $('#pa2').text(data.pa2);
+                   $('#pm2').text(data.pm2);
+                   $('#percentage2').text(data.percentage2);
+                   $('#pa3').text(data.pa3);
+                   $('#pm3').text(data.pm3);
+                   $('#percentage3').text(data.percentage3);
+                   $('#pa1').text(data.pa1);
+                   $('#pm1').text(data.pm1);
+                   $('#percentage1').text(data.percentage1);
+                   $('#ast').text(data.ast);
+                   $('#blk').text(data.blk);
+                   $('#to').text(data.to);
+                   $('#stl').text(data.stl);
+                   $('#opf').text(data.opf);
+                   $('#dpf').text(data.dpf);
+                   $('#oreb').text(data.oreb);
+                   $('#dreb').text(data.dreb);
+                });
+            });
+        });*/
+    </script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>
