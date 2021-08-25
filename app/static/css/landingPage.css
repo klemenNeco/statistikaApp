@@ -40,6 +40,7 @@ div {
 #opponent_input, #date_input {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.1em;
+    font-weight: bold;
     width: 250px;
     border-radius: 7px;
     padding: 10px;

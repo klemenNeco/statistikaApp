@@ -1,6 +1,7 @@
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-size: 1.6em;
+    font-weight: bold;
 }
 
 body {
@@ -8,9 +9,14 @@ body {
     padding: 30px;
 }
 
+div {
+    font-weight:bold;
+}
+
 .side-players {
     height: 100%;
-    width: 20%;
+    width: 40%;
+    margin-top: 16px;
 }
 
 a {
@@ -18,7 +24,11 @@ a {
 }
 
 a:hover {
-    background-color: lightgrey;
+    background-color: rgba(0,0,0,0.04);
+}
+
+a:active {
+    background-color: rgba(0,0,0,0.04);
 }
 
 table {
@@ -26,11 +36,16 @@ table {
     padding: 7px 0;
     width: 100%;
     border: none;
+    border-radius: 10px;
 }
 
 table:hover {
-    background-color: lightgrey;
-    border-radius: 7px;
+    background-color: rgba(0,0,0,0.04);
+    border-radius: 5%;
+}
+
+table:active {
+    background-color: rgba(0,0,0,0.04);
 }
 
 .player-id {
@@ -54,6 +69,23 @@ table:hover {
     color: black;
 }
 
+.editStat {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 10px;
+    border: 0.1px solid;
+    padding: 4px 16px;
+    margin: 0px 16px 0 0;
+    font-weight: 800;
+}
+
+.editStat:hover{
+    background-color: #F4A41E;
+    color: white;
+}
+
+.section {
+    font-weight: 800;
+}
 @media screen and (max-width: 1200px) {
     .side-players {
         width: 40%;

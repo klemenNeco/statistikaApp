@@ -1,11 +1,10 @@
 {% extends "playerList.html" %}
 
 {% block content %}
-    <h1>Izberi igralca</h1>
-
-        <div>Točke</div>
-        <div>{{ selected_player.jersey_no }} {{ selected_player.full_name }}</div>
-        <br>
+   
+    <h1>{{ selected_player.full_name }}</h1>
+    <br>
+        <div class="section">Točke</div>
         <button type="button" class="editStat" id="ftm" p_id="{{ selected_player.player_id }}">FTM</button>
         <button type="button" class="editStat" id="pm2" p_id="{{ selected_player.player_id }}">2PM</button>
         <button type="button" class="editStat" id="pm3" p_id="{{ selected_player.player_id }}">3PM</button>
@@ -13,22 +12,24 @@
         <button type="button" class="editStat" id="pa2" p_id="{{ selected_player.player_id }}">2PA</button>
         <button type="button" class="editStat" id="pa3" p_id="{{ selected_player.player_id }}">3PA</button>
 
-
-        <div>Skoki</div>
+        <br><br>
+        <div class="section">Skoki</div>
         <button type="button" class="editStat" id="oreb" p_id="{{ selected_player.player_id }}">Skoki v napadu</button>
         <button type="button" class="editStat" id="dreb" p_id="{{ selected_player.player_id }}">Skok v obrambi</button>
-
-        <div>Osebne napake</div>
+        
+        <br><br>
+        <div class="section">Osebne napake</div>
         <button type="button" class="editStat" id="opf" p_id="{{ selected_player.player_id }}">Osebna napaka v napadu</button>
         <button type="button" class="editStat" id="dpf" p_id="{{ selected_player.player_id }}">Osebna napaka v obrambi</button>
 
-        <br><br><button type="button" class="editStat" id="ast" p_id="{{ selected_player.player_id }}">Asistenca</button>
+        <br><br><br>
+        <button type="button" class="editStat" id="ast" p_id="{{ selected_player.player_id }}">Asistenca</button>
         <button type="button" class="editStat" id="to" p_id="{{ selected_player.player_id }}">Izgubljena žoga</button>
         <button type="button" class="editStat" id="blk" p_id="{{ selected_player.player_id }}">Blok</button>
         <button type="button" class="editStat" id="stl" p_id="{{ selected_player.player_id }}">Ukradena žoga</button>
 
-        <br><br>
-        <button type="button">Potrdi</button>
+        <br><br><br><br><br><br>
+        <a href="game"><button class="editStat" type="button">Domov</button></a>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script>
