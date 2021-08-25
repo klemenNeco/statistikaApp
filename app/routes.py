@@ -109,27 +109,35 @@ def final_stat():
     current_opponent = Opponents.query.filter_by(date=date.today()).first()
     selected_player = Players.query.filter_by(player_id=selected_id).first()
 
-    fga = selected_player.pa_2 + selected_player.pa_3
-    fgm = selected_player.pm_2 + selected_player.pm_3
-    if fga == 0:
+    if selected_id is None:
+        fga = 0
+        fgm = 0
+        percentage1 = 0
+        percentage2 = 0
+        percentage3 = 0
         percentage_fg = 0
     else:
-        percentage_fg = round((fgm / fga) * 100)
+        fga = selected_player.pa_2 + selected_player.pa_3
+        fgm = selected_player.pm_2 + selected_player.pm_3
+        if fga == 0:
+            percentage_fg = 0
+        else:
+            percentage_fg = round((fgm / fga) * 100)
 
-    if selected_player.pa_1 == 0:
-        percentage1 = 0
-    else:
-        percentage1 = round((selected_player.pm_1 / selected_player.pa_1) * 100)
+        if selected_player.pa_1 == 0:
+            percentage1 = 0
+        else:
+            percentage1 = round((selected_player.pm_1 / selected_player.pa_1) * 100)
 
-    if selected_player.pa_2 == 0:
-        percentage2 = 0
-    else:
-        percentage2 = round((selected_player.pm_2 / selected_player.pa_2) * 100)
+        if selected_player.pa_2 == 0:
+            percentage2 = 0
+        else:
+            percentage2 = round((selected_player.pm_2 / selected_player.pa_2) * 100)
 
-    if selected_player.pa_3 == 0:
-        percentage3 = 0
-    else:
-        percentage3 = round((selected_player.pm_3 / selected_player.pa_3) * 100)
+        if selected_player.pa_3 == 0:
+            percentage3 = 0
+        else:
+            percentage3 = round((selected_player.pm_3 / selected_player.pa_3) * 100)
     return render_template('final_stat.html', current_opponent=current_opponent, players=players,
                            selected_player=selected_player, fga=fga, fgm=fgm, percentage1=percentage1,
                            percentage2=percentage2, percentage3=percentage3, percentage_fg=percentage_fg)
