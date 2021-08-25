@@ -2,7 +2,7 @@
 
 {% block content %}
     <h2 id="bbq" style="text-align: center;">Bazen Bar & BBQ</h2>
-        <div id="rezultat1" style="text-align: center;">47</div>
+        <div id="rezultat1" style="text-align: center;">{{ current_opponent.home_team_points }}</div>
 
         <div style="text-align: center;">VS</div>
 
@@ -15,6 +15,8 @@
 
         <button id="minus1" type="button" points="{{ current_opponent.points }}">-1</button>
         <button type="button" id="confirm" status="false">Potrdi</button>
+
+        <a href="{{ url_for('final_stat') }}"><button type="submit">Končaj tekmo</button></a>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>

@@ -52,6 +52,7 @@ class Opponents(db.Model):
     score = db.Column(db.Boolean, index=True)
     result = db.Column(db.Boolean, index=True)
     date = db.Column(db.Date, index=True, nullable=False)
+    home_team_points = db.Column(db.Integer, index=True)
     id_opponent = db.relationship('Players', backref='opponent', lazy=True)
 
     def __repr__(self):
