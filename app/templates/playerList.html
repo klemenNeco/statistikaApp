@@ -24,7 +24,7 @@
                 <div class="side-players">
                     {% for player in players %}
                         <a href="{{ url_for('player_stat', id=player.player_id) }}" class="player">
-                            <table>
+                            <table class="igralci">
                                 <tr>
                                     <td rowspan="2" class="player-id">
                                         <div>{{ player.jersey_no }}</div>

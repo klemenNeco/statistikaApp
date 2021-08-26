@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Izberi igralca</h1>
+                <h1>Champ vs {{ current_opponent.team_name}}</h1>
                 <div class="side-players">
                     {% for player in players %}
                         <a href="{{ url_for('final_stat', id=player.player_id) }}" class="player" id="{{ player.player_id }}">
@@ -45,26 +45,27 @@
                 </div>
             </div>
             <div class="col">
-                <h2>Statistika igralca {{ selected_player.full_name }}</h2>
+                <h1 class="naslovf">Statistika igralca {{ selected_player.full_name }}</h1>
                 <table>
                     <thead>Meti iz igre</thead>
                     <tr>
-                        <td>Število poizkusov</td>
-                        <td>Število zadetih metov</td>
-                        <td>Odstotek zadetih metov</td>
+                        <td class="final">Število poizkusov</td>
+                        <td class="final">Število zadetih metov</td>
+                        <td class="final">Odstotek zadetih metov [%]</td>
                     </tr>
                     <tr>
-                        <td id="fga">{{ fga }}</td>
-                        <td id="fgm">{{ fgm }}</td>
-                        <td id="percentage_fg">{{ percentage_fg }}</td>
+                        <td id="fga" class="cifre">{{ fga }}</td>
+                        <td id="fgm" class="cifre">{{ fgm }}</td>
+                        <td id="percentage_fg" class="cifre">{{ percentage_fg }}</td>
                     </tr>
                 </table>
+                <br>
                 <table>
                     <thead>Meti za 2 točki</thead>
                     <tr>
-                        <td>Število poizkusov</td>
-                        <td>Število zadetih metov</td>
-                        <td>Odstotek zadetih metov</td>
+                        <td class="final">Število poizkusov</td>
+                        <td class="final">Število zadetih metov</td>
+                        <td class="final">Odstotek zadetih metov [%]</td>
                     </tr>
                     <tr>
                         <td id="pa2">{{ selected_player.pa_2 }}</td>
@@ -72,12 +73,13 @@
                         <td id="percentage2">{{ percentage2 }}</td>
                     </tr>
                 </table>
+                <br>
                 <table>
                     <thead>Meti za 3 točke</thead>
                     <tr>
-                        <td>Število poizkusov</td>
-                        <td>Število zadetih metov</td>
-                        <td>Odstotek zadetih metov</td>
+                        <td class="final">Število poizkusov</td>
+                        <td class="final">Število zadetih metov</td>
+                        <td class="final">Odstotek zadetih metov [%]</td>
                     </tr>
                     <tr>
                         <td id="pa3">{{ selected_player.pa_3 }}</td>
@@ -85,12 +87,13 @@
                         <td id="percentage3">{{ percentage3 }}</td>
                     </tr>
                 </table>
+                <br>
                 <table>
                     <thead>Prosti meti</thead>
                     <tr>
-                        <td>Število poizkusov</td>
-                        <td>Število zadetih metov</td>
-                        <td>Odstotek zadetih metov</td>
+                        <td class="final">Število poizkusov</td>
+                        <td class="final">Število zadetih metov</td>
+                        <td class="final">Odstotek zadetih metov [%]</td>
                     </tr>
                     <tr>
                         <td id="pa1">{{ selected_player.pa_1 }}</td>
@@ -98,29 +101,31 @@
                         <td id="percentage1">{{ percentage1 }}</td>
                     </tr>
                 </table>
+                <br>
                 <table>
                     <thead>Ostala statistika</thead>
                     <tr>
-                        <td>Asistence</td>
-                        <td>Bloki</td>
-                        <td>Izgubljene žoge</td>
-                        <td>Ukradene žoge</td>
-                        <td>Osebne napake v napadu</td>
+                        <td class="final">Asistence</td>
+                        <td class="final">Bloki</td>
+                        <td class="final">Izgubljene žoge</td>
+                        <td class="final">Ukradene žoge</td>
                     </tr>
+                    <br>
                     <tr>
                         <td id="ast">{{ selected_player.assists }}</td>
                         <td id="blk">{{ selected_player.blocks }}</td>
                         <td id="to">{{ selected_player.turnovers }}</td>
                         <td id="stl">{{ selected_player.steals }}</td>
-                        <td id="opf">{{ selected_player.fouls_o }}</td>
                     </tr>
                     <tr>
-                        <td>Osebne napake v obrambi</td>
-                        <td>Skoki v napadu</td>
-                        <td>Skoki v obrambi</td>
+                        <td class="final">Osebne napake v obrambi</td>
+                        <td class="final">Osebne napake v napadu</td>
+                        <td class="final">Skoki v napadu</td>
+                        <td class="final">Skoki v obrambi</td>
                     </tr>
                     <tr>
                         <td id="dpf">{{ selected_player.fouls_d }}</td>
+                        <td id="opf">{{ selected_player.fouls_o }}</td>
                         <td id="oreb">{{ selected_player.rebounds_o }}</td>
                         <td id="dreb">{{ selected_player.rebounds_d }}</td>
                     </tr>

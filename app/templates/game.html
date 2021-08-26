@@ -3,20 +3,21 @@
 {% block content %}
     <h2 id="bbq" style="text-align: center;">Bazen Bar & BBQ</h2>
         <div id="rezultat1" style="text-align: center;">{{ current_opponent.home_team_points }}</div>
-
+        <br>
         <div style="text-align: center;">VS</div>
+        <br>
+        <h2 id="nasportnik" style="text-align: center;">{{ current_opponent.team_name }}</h2>
+        <div id="result2" style="text-align: center;">{{ current_opponent.points }}</div>
 
-        <h2 id="nasportnik" style="text-align: right;">{{ current_opponent.team_name }}</h2>
-        <div id="result2" style="text-align: right;">{{ current_opponent.points }}</div>
+        <br><br>
+        <button class="editStat" id="1pm" type="button" points="{{ current_opponent.points }}">1PM</button>
+        <button class="editStat" id="2pm" type="button" points="{{ current_opponent.points }}">2PM</button>
+        <button class="editStat" id="3pm" type="button" points="{{ current_opponent.points }}">3PM</button>
 
-        <button id="1pm" type="button" points="{{ current_opponent.points }}">1PM</button>
-        <button id="2pm" type="button" points="{{ current_opponent.points }}">2PM</button>
-        <button id="3pm" type="button" points="{{ current_opponent.points }}">3PM</button>
+        <button class="editStat" id="minus1" type="button" points="{{ current_opponent.points }}">-1</button>
+        <!-- <button class="editStat" type="button" id="confirm" status="false">Potrdi</button> -->
 
-        <button id="minus1" type="button" points="{{ current_opponent.points }}">-1</button>
-        <button type="button" id="confirm" status="false">Potrdi</button>
-
-        <a href="{{ url_for('final_stat') }}"><button type="submit">Končaj tekmo</button></a>
+        <a href="{{ url_for('final_stat') }}"><button type="submit" class="editStat">Končaj tekmo</button></a>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script>
