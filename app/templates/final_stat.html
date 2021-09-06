@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>Champ vs {{ current_opponent.team_name}}</h1>
+                <h1>Bazen Bar & BBQ vs {{ current_opponent.team_name}}</h1>
                 <div class="side-players">
                     {% for player in players %}
                         <a href="{{ url_for('final_stat', id=player.player_id) }}" class="player" id="{{ player.player_id }}">
